@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="cssFile.css">
+    <script src="assets/js/app.js" type="module"></script>
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js" type="module"></script> -->
+
+</head>
+<body>
+    <div class="login-box">
+        <!-- <img src="/assets/images/sweather.png" alt="Your Logo" class="logo"> -->
+        <div class="left">
+            <h2>Login</h2>
+            <input type="text" id="email" name="email" placeholder="E-mail">
+            <input type="password" id="password" name="password" placeholder="Password">
+            <input type="submit" id="login" name="login" value="Login">
+            <span>Don't have an account? <a href="signup.html" class="signup-button">Sign Up</a> now!</span> 
+        </div>
+        <span class="forgot-password">Forgot your password? Feel free to reset your password here <a href="forget.html" class="signup-button">Reset Password</a></span>
+
+    </div>
+    
+</body>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword,createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+    import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+    
+    
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+apiKey: "AIzaSyDGnaCFPaz4yh2050QaWkknwmU9U1HdMjc",
+authDomain: "sweather-web.firebaseapp.com",
+databaseURL: "https://sweather-web-default-rtdb.firebaseio.com",
+projectId: "sweather-web",
+storageBucket: "sweather-web.appspot.com",
+messagingSenderId: "218825586501",
+appId: "1:218825586501:web:f98ddf9792e788dad0f02c"
+};
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const loginButton = document.getElementById('login');
+
+    loginButton.addEventListener('click', (e) => {
+     const email = document.getElementById('email').value;
+     const password = document.getElementById('password').value;
+     const database = getDatabase();
+
+     signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+        const dt = new Date();
+
+        // Update last_login in the Realtime Database
+        update(ref(database, 'users/' + user.uid), {
+            last_login: dt,
+        });
+
+        alert('User logged in!');
+
+        // Delay the redirection by 1 second
+        setTimeout(function() {
+            window.location.href = 'index.html';
+        }, 1000);
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert('Error logging in: ' + errorMessage);
+    });
+
+});
+
+
+
+</script>
+</html>

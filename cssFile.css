@@ -1,0 +1,130 @@
+body {
+    background-image: url('/assets/images/bg2.png'); /* Replace with the path to your image */
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    font-family: Arial, sans-serif;
+    background-color: #131214;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    background-color: #434343;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block; /* Makes the link behave like a block element */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+a:hover {
+    background-color:#595868 ;
+}
+
+.login-box {
+    background-color: #777777;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-box img.logo {
+    max-width: 250px; /* Adjust this value as needed */
+
+}
+
+
+.login-box .left h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+
+.login-box input {
+    color: white;
+    font-weight: bold;
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: transparent;
+}
+.login-box input[type="text"]::placeholder,
+.login-box input[type="password"]::placeholder {
+    color: white; /* Set the color you want for the placeholder text */
+}
+
+.login-box input[type="submit"] {
+    font-weight: bold;
+    background-color: #434343;
+    
+    transition: background-color 0.3s;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-box input[type="submit"]:hover {
+    background-color: #595868;
+}
+
+
+.login-box .right button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.login-box .right button:hover {
+    background-color: #f0f0f0;
+}
+
+.login-box .right .or {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.login-box .right .loginwith {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.login-box span{
+    font-weight: bold;
+}
+
+.forgot-password {
+    font-size: 0.8rem; /* Adjust the font size as needed */
+}
+
+.signup-button {
+    background-color: rgb(72, 72, 72);
+    color: #ffffff; /* Change to the color you want */
+    text-decoration: none; /* Remove underline */
+}
+
+.signup-button:hover {
+    background-color: #fff;
+    color: #000000; /* Change to the hover color you want */
+}
+
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Password Reset</title>
+    <link rel="stylesheet" href="forget.css">
+
+    <!-- Include Firebase App SDK -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
+    <!-- Include Firebase Authentication SDK -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js"></script>
+</head>
+<body>
+    <main>
+        <section class="container reset-container">       
+                <div>
+                    <label for="mail">Email</label> <br>
+                    <input type="email" id="mail" name="mail"/>
+                </div>
+                <button id="resetPassword">Confirm</button>
+                <a href="login.html" class="button">Back to Login</a>
+        </section>
+        <div class="feedbackContainer success">
+            <div class="feedbackIcon"></div>
+            <p class="feedbackMessage" id="successMessage"></p> <!-- Updated message -->
+        </div>
+        <div class="feedbackContainer failure">
+            <div class="feedbackIcon"></div>
+            <p class="feedbackMessage" id="failureMessage"></p> <!-- Updated message -->
+        </div>
+    </main>
+
+    <!-- Initialize Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+        import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+
+        const firebaseConfig = {
+apiKey: "AIzaSyDGnaCFPaz4yh2050QaWkknwmU9U1HdMjc",
+authDomain: "sweather-web.firebaseapp.com",
+databaseURL: "https://sweather-web-default-rtdb.firebaseio.com",
+projectId: "sweather-web",
+storageBucket: "sweather-web.appspot.com",
+messagingSenderId: "218825586501",
+appId: "1:218825586501:web:f98ddf9792e788dad0f02c"
+};
+        const app = initializeApp(firebaseConfig);
+
+        const mailField = document.getElementById('mail');
+        const resetPassword = document.getElementById('resetPassword');
+        const successMessage = document.getElementById('successMessage');
+        const failureMessage = document.getElementById('failureMessage');
+
+        const auth = getAuth(app);
+
+        const resetPasswordFunction = () => {
+            const email = mailField.value;
+
+            if (email) {
+                sendPasswordResetEmail(auth, email)
+                    .then(() => {
+                        successMessage.textContent = 'Password Reset Email Sent Successfully!';
+                        failureMessage.textContent = '';
+                    })
+                    .catch(error => {
+                        failureMessage.textContent = error.message;
+                        successMessage.textContent = '';
+                    })
+            } else {
+                failureMessage.textContent = 'Please enter your email address.';
+                successMessage.textContent = '';
+            }
+        }
+
+        resetPassword.addEventListener('click', resetPasswordFunction);
+    </script>
+</body>
+</html>

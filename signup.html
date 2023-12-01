@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="cssFile.css"> <!-- You can link your CSS file here -->
+</head>
+<body>
+    <div class="login-box">
+        <!-- <img src="/assets/images/sweather.png" alt="Your Logo" class="logo"> -->
+        <div class="left">
+        <h2>Sign Up</h2>
+        <input type="text" id="username" name="username" placeholder="Username">
+        <input type="text" id="email" name="email" placeholder="E-mail">
+        <input type="password" id="password" name="password" placeholder="Password">
+        <input type="submit" id="signUp" name="signup_submit" value="Sign Up">
+        <span>Already have an account? Proceed to</span>
+        <a href="login.html">Log In</a>
+    </div>
+
+</div>
+
+</body>
+ 
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDGnaCFPaz4yh2050QaWkknwmU9U1HdMjc",
+      authDomain: "sweather-web.firebaseapp.com",
+      databaseURL: "https://sweather-web-default-rtdb.firebaseio.com",
+      projectId: "sweather-web",
+      storageBucket: "sweather-web.appspot.com",
+      messagingSenderId: "218825586501",
+      appId: "1:218825586501:web:f98ddf9792e788dad0f02c"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+
+    signUp.addEventListener('click', (e) => {
+
+var email = document.getElementById('email').value;
+var password = document.getElementById('password').value;
+var username = document.getElementById('username').value;
+
+createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+        set(ref(database,'users/'+ user.uid),{
+            username: username,
+            email: email
+        });
+
+        alert('user created!');
+        // Delay the redirection by 1 second
+        setTimeout(function() {
+            window.location.href = 'login.html';
+        }, 1000);
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorCode, errorMessage);
+        alert(errorMessage);
+    });
+
+
+});
+  </script>
+</html>

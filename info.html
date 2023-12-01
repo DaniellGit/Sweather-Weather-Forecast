@@ -1,0 +1,56 @@
+<!-- faq.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+    <link rel="stylesheet" href="info.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(1)">How do I access the Weather Forecast Web Application?</div>
+            <div class="faq-answer">Simply visit our website and you'll land on the home page after you logged in, please make sure you already registered to use our features. From there, you can explore various features and input your location for personalized weather forecasts.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(2)">How can I get weather forecasts for my specific location?</div>
+            <div class="faq-answer">On the homepage, you'll find a location search bar. Enter your city or region, and the application will provide you with accurate and localized weather predictions.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(3)">Is the service free to use?</div>
+            <div class="faq-answer">Yes, Sweather Forecast Web Application is free to use. As long you registered, you are good to go.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(4)">What information does the application provide?</div>
+            <div class="faq-answer">The Weather Forecast Web Application offers a range of information, including current temperature, rainfall forecasts, wind speed and direction, and air quality index.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(5)">How do I reset my password?</div>
+            <div class="faq-answer">You can reset your password by clicking on the "Forgot Password" link on the login page.</div>
+        </div>
+
+        <button class="back-button" onclick="goBack()">Back to Index</button>
+    </div>
+
+    <script>
+        function toggleAnswer(faqNumber) {
+            const faqAnswer = document.querySelector(`.faq-item:nth-child(${faqNumber}) .faq-answer`);
+            faqAnswer.classList.toggle('active');
+        }
+
+        function goBack() {
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>
