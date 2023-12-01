@@ -9,11 +9,6 @@ a tool designed to enhance your daily planning by delivering precise and persona
 **Client:** HTML, CSS, JavaScript, API
 
 
-## Screenshots
-
-![App Screenshot](![image](https://github.com/DaniellGit/Sweather-Weather-Forecast/assets/95289393/026d67fc-8fa9-4e19-9e95-451ce72f1ad3)
-)
-
 ## Run Locally
 
 Clone the project
