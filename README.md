@@ -1,25 +1,18 @@
 
-# Project Title
+# Sweather Weather Forecast Web Application
 
-A brief description of what this project does and who it's for
+a tool designed to enhance your daily planning by delivering precise and personalized weather forecasts. In a world where weather knowledge influences various aspects of our lives, this app aims to bridge the gap between traditional forecasts and the specific details you need. Utilizing advanced computer techniques, the app goes beyond displaying data to actively assist in interpretation. Whether you're a farmer, traveler, or planner, this app provides real-time, location-specific updates.
+
 
 ## Tech Stack
 
 **Client:** HTML, CSS, JavaScript, API
 
-## Demo
-
-Insert gif or link to demo
-
-## Features
-
-- Feature 1
-- Feature 2
-- Feature 3
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](![image](https://github.com/DaniellGit/Sweather-Weather-Forecast/assets/95289393/026d67fc-8fa9-4e19-9e95-451ce72f1ad3)
+)
 
 ## Run Locally
 
